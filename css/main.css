@@ -313,7 +313,7 @@ h4 {
   left: 0;
   right: 0;
   bottom: 0;
-  animation: container-loading 4s 1;
+  animation: container-loading 2s 1;
 }
 
 .lds-ellipsis {
@@ -485,18 +485,44 @@ h5 {
   width: 4rem;
   margin-left: 1.5rem;
   margin-top: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .menuresto__btn {
+  display: block;
   margin-left: 1.5rem;
   margin-right: 1.5rem;
-  margin-top: 1.5rem;
-  width: auto;
+  margin-top: 1.2rem;
+  width: 100%;
   height: 4.7rem;
   border: 1px solid #FFFFFF;
   background-color: #FFFFFF;
   box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2);
   border-radius: 15px;
+  cursor: pointer;
+}
+.menuresto__btn:hover + .menuresto__coche {
+  animation-name: anim-coche;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+.menuresto__btn:hover + .menuresto__coche > .circle {
+  transform: rotate(0deg);
+}
+.menuresto__btn:hover > .plat__texte > .prix {
+  animation-name: anim-prix;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+.menuresto__btn:hover > .plat__texte > .plat__complements {
+  width: 15rem;
+  height: 1.5rem;
+  overflow: hidden;
+  white-space: nowrap;
+  overflow-wrap: break-word;
+  text-overflow: ellipsis;
+  word-break: break-word;
+  hyphens: auto;
 }
 
 .plat__titre {
@@ -506,16 +532,20 @@ h5 {
   padding-top: 0.8rem;
 }
 
-.plat__complements {
+.plat__texte {
   display: flex;
   justify-content: space-between;
+}
+
+.plat__complements {
   padding-left: 0.5rem;
-  padding-right: 1.5rem;
   padding-top: 0.3rem;
 }
 
 .prix {
   font-weight: bold;
+  padding-right: 1.5rem;
+  padding-top: 0.3rem;
 }
 
 .bouton__commander a {
@@ -548,38 +578,86 @@ h5 {
 @keyframes menuresto-anim {
   0% {
     opacity: 0;
-    transform: translateY(15px);
+    transform: translateY(25px);
   }
   100% {
     opacity: 1;
     transform: translateY(0);
   }
 }
-.menuresto__btn:nth-child(1) {
+.menuresto__container:nth-child(1) {
   animation-name: menuresto-anim;
   animation-duration: 2s;
   transition-timing-function: ease-in-out;
 }
 
-.menuresto__btn:nth-child(2) {
+.menuresto__container:nth-child(2) {
   animation-name: menuresto-anim;
   animation-duration: 2s;
   transition-timing-function: ease-in-out;
-  animation-delay: 400ms;
+  animation-delay: 300ms;
 }
 
-.menuresto__btn:nth-child(3) {
+.menuresto__container:nth-child(3) {
   animation-name: menuresto-anim;
   animation-duration: 2s;
   transition-timing-function: ease-in-out;
-  animation-delay: 800ms;
+  animation-delay: 600ms;
 }
 
-.menuresto__btn:nth-child(4) {
+.menuresto__container:nth-child(4) {
   animation-name: menuresto-anim;
   animation-duration: 2s;
   transition-timing-function: ease-in-out;
-  animation-delay: 1000ms;
+  animation-delay: 900ms;
+}
+
+.menuresto__coche {
+  width: 5rem;
+  height: 4.7rem;
+  margin-top: 1.2rem;
+  margin-right: 1.5rem;
+  background-color: #99e2d0;
+  border-radius: 0px 15px 15px 0px;
+  position: absolute;
+  z-index: 1;
+  opacity: 0;
+}
+
+.menuresto__container {
+  display: flex;
+  position: relative;
+  justify-content: flex-end;
+}
+
+@keyframes anim-coche {
+  0% {
+    opacity: 1;
+    transform: translateX(2rem);
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+.circle {
+  color: #FFFFFF;
+  font-size: 2rem;
+  position: relative;
+  top: 1.4rem;
+  left: 1.5rem;
+  transform: rotate(-360deg);
+  transition: transform 500ms ease-in-out;
+  transform-origin: 1.5rem center;
+}
+
+@keyframes anim-prix {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-4.5rem);
+  }
 }
 
 /*# sourceMappingURL=main.css.map */
