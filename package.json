@@ -1,0 +1,19 @@
+{
+  "name": "projet3",
+  "version": "1.0.0",
+  "description": "p3 ohmyfood",
+  "main": "index.js",
+  "scripts": {
+    "sass": "sass --watch./sass/main.scss:./css/style.css --style expanded"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Franec59/francoislion_3_20102020.git"
+  },
+  "author": "François Lion",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Franec59/francoislion_3_20102020/issues"
+  },
+  "homepage": "https://github.com/Franec59/francoislion_3_20102020#readme"
+}
