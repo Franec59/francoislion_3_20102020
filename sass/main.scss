@@ -1,0 +1,760 @@
+
+$color-primaire:#9356DC;
+$color-secondaire:#FF79DA;
+$color-tertiaire:#99E2D0;
+$fond-gris:rgb(246,246,246);
+$fond-map:rgb(234,234,234);
+$fond-btn2:rgb(245,237,255);
+$color-vert:rgb(153,226,208);
+$color-font-map:rgba(#000000,0.6);
+$color-barre:rgb(213,213,213);
+$fond-bouton:rgba($color-primaire, 0.6);
+$btn-font:rgba(#FFFFFF, 0.8);
+$coeur-duration:1s;
+$coeur-delay:50ms;
+$background-btn:linear-gradient($color-secondaire,$color-primaire);
+
+@font-face {
+    font-family: 'robotoregular';
+    src: url('polices/Roboto-Regular-webfont.eot');
+    src: url('polices/Roboto-Regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('polices/Roboto-Regular-webfont.woff2') format('woff2'),
+         url('polices/Roboto-Regular-webfont.woff') format('woff'),
+         url('polices/Roboto-Regular-webfont.ttf') format('truetype'),
+         url('polices/Roboto-Regular-webfont.svg#robotoregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'shrikhandregular';
+    src: url('polices/shrikhand-regular-webfont.woff2') format('woff2'),
+        url('polices/shrikhand-regular-webfont.eot'),
+        url('polices/shrikhand-regular-webfont.ttf') format('truetype'),
+         url('polices/shrikhand-regular-webfont.svg#shrikhandregular') format('svg'),
+         url('Polices/shrikhand-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+// screen mobile
+$mobile: 599px;
+ 
+// screen smalltablette
+$smalltablette: 768px;
+ 
+// screen tablette
+$tablette: 992px;
+ 
+// screen ordi
+$desktop: 1200px;
+
+@mixin mobile-only {
+    @media (max-width: #{$mobile}) {
+        @content;
+    }
+ }
+
+// .selecteur {
+    //padding: 0 15px;
+// pour utiliser la mixin ds le selecteur
+    //@include mobile-only {
+        //padding: 0 20px;
+    //}
+
+@mixin bouton{
+    display:block;
+    height: 4.5rem;
+    width:20rem;
+    box-shadow: 0px 0px 16px rgba(black, 0.4);
+    border-radius:50px;
+    padding-top:1.4rem;
+    text-align:center;
+    background:$background-btn;
+    color:$btn-font;
+    text-decoration:none;
+    font-size:1.4rem;
+    text-shadow: 1px 1px 2px rgba(#FFFFFF,0.5);
+    position:relative;
+    z-index: 5;
+}
+
+@mixin fonctionnement__btn{
+    display: flex; 
+    height: 5.5rem;
+    width:auto;
+    box-shadow: 2px 2px 12px rgba(black, 0.2);
+    border-radius:20px;
+    padding-top:1.8rem;
+    text-align:center;
+    margin-left: 1rem;
+    margin-top: 1.5rem;
+}
+
+@mixin btn-hover{
+  filter: brightness(1.1);
+  box-shadow: 4px 4px 16px rgba(black, 0.5);
+}
+    
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'robotoregular',Arial, Verdana, sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+//partie header
+
+.logo1{
+    width: 16rem;
+    height: auto; /*mettre en % la l ou la H pour conserver la proportion*/
+    margin-top: 0.5rem;
+}
+
+.entete{
+    display: flex;
+    justify-content: center;
+    width: 100%; 
+    height: 5rem;
+    background-color: #FFFFFF;
+}
+
+//section accueil
+
+#accueil{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    
+    &__map{
+        display: flex;
+        justify-content: center;
+        height: 4.5rem;
+        width: 100%;
+        font-size: 1.5rem;
+        font-weight: bold;
+        color:$color-font-map;
+        text-shadow: 1px 1px 2px $color-font-map;
+        border-top:5px solid $color-barre;
+        background: $fond-map;
+    }
+
+    &__reservation{
+        display: flex;
+        flex-direction: column;
+        align-items: center;      
+        height: 25rem;
+        width: 100%;
+        background-color: $fond-gris;           
+    }
+}
+
+.fa-map-marker-alt{
+    margin-top:1.4rem;
+    margin-right: 2rem;
+}
+
+#resa{
+    font-size: 2.1rem;
+    font-weight: 780;   
+    text-align: center;
+    padding-top:1.5rem;
+    text-shadow: 1px 1px 2px $color-font-map;
+}
+
+#decou{
+font-size: 1.4rem;
+text-align: center;
+color:$color-font-map;
+margin-top:-1rem;
+text-shadow: 1px 1px 2px rgba(#000000,0.2);
+}
+
+.reservation__bouton a {
+  @include bouton ;
+
+  &__bouton a:hover {
+    @include btn-hover
+  }
+}
+
+.reservation__bouton a:hover {
+    @include btn-hover
+}
+
+//partie fonctionnement avec 3 boutons
+
+#fonctionnement{
+height: 350px;
+width: 100%;
+padding-left: 1.5rem;
+padding-right: 1.5rem;
+margin-bottom: 5rem;
+}
+
+.fonctionnement__bouton{
+    @include fonctionnement__btn ;
+    background-color: $fond-gris;
+}
+
+.fonctionnement__bouton2{
+    @include fonctionnement__btn ;
+    background-color: $fond-btn2;
+}
+
+.texte-btn{
+    margin-left: 2rem;
+    font-size: 1.3rem;
+    text-shadow: 1px 1px 2px $color-font-map;
+    font-weight: bold;
+    color:$color-font-map;
+}
+
+.fa-mobile-alt, .fa-list-ul{
+    margin-left: 1.5rem;
+    font-size: 2rem;
+    color:rgba(#000000,0.4);
+}
+
+.fa-store{
+    margin-left: 1.5rem;
+    font-size: 2rem;
+    color:$color-primaire;
+}
+
+.num-btn{
+    border:1px solid $color-primaire;
+    border-radius: 50px;
+    background-color: $color-primaire;
+    width: 30px;
+    height: 30px;
+    color:$btn-font;
+    position: relative;
+    margin-left: -1rem;
+    padding-top: 0.3rem;
+}
+
+//partie restaurant photo carte cliquable
+
+#resto{
+    display: flex;
+    flex-direction: column;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    padding-top: 1.5rem;
+    padding-bottom: 4rem;
+    height: auto;
+    background: $fond-gris;  
+}
+
+.resto__img{
+    height: 13rem;
+    width: 100%;
+    border-radius: 19px 19px 0px 0px;
+    object-fit: cover;
+    margin-top: 1.5rem;
+}
+
+.resto__legende{
+    border-radius: 0px 0px 20px 20px;
+    width: 100%;
+    height: 6rem;
+    background-color: #FFFFFF;
+    color:rgba(#000000,0.8);
+    font-size: 1.3rem;
+    margin-top: -1rem;
+    padding-top: 1rem;
+    padding-left: 1rem;
+    line-height: 0.5rem;
+    text-shadow: 1px 1px 1px rgba(#000000,0.2);
+    box-shadow: 2px 2px 12px rgba(black, 0.1);   
+}
+
+.coeurvide{
+    font-size: 1.7rem;
+    color:rgba(#000000,0.8);
+    margin-right:1.5rem;
+    margin-top:-2.3rem;
+    float: right;
+}
+
+.coeurplein{
+    font-size: 1.7rem;
+    margin-right:1.5rem;
+    margin-top:-2.3rem;
+    float: right;
+    opacity: 0;
+}
+
+//animation du bouton j'aime en forme de coeur
+
+.coeurplein:hover{
+    cursor: pointer;
+    animation-duration: $coeur-duration;
+    animation-delay: $coeur-delay;
+    animation-name: coeur;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+  }
+  
+  @keyframes coeur{
+    from {
+      opacity: 0;
+      color:#FFFFFF;
+    }
+  
+    to {
+      opacity:1;
+      color:$color-primaire; 
+    }
+  }
+
+a{
+    text-decoration: none;
+}
+
+h2{
+    font-weight: bold;
+    font-size: 1.3rem;
+    text-shadow: 1px 1px 1px $color-font-map;
+}
+
+h1{
+    font-weight: 750;
+    text-shadow: 1px 1px 2px $color-font-map;
+}
+
+.nouveau{
+    width: 5rem;
+    height: 2rem;
+    background-color: rgba(153,226,208);
+    border-radius:2px;
+    padding-top:0.5rem;
+    text-align:center;
+    position:relative;
+    bottom:12rem;
+    color:rgba(0,135,102);
+    margin-right:1.5rem;
+    float: right;
+}
+
+//partie footer
+
+footer{
+    background-color:rgba(#000000,0.8) ;
+    width: 100%;
+    height: auto;
+    padding-left:1.5rem;
+    padding-bottom: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+h4{
+    font-family: 'shrikhandregular';
+    color:#FFFFFF;
+    font-size: 1.5rem; 
+}
+
+.bloc__liens{
+    line-height: 2rem;
+    color:#FFFFFF;
+}
+
+.liens a{
+    color:#FFFFFF;
+    font-size: 1.2rem;
+    text-shadow: 1px 1px 2px rgba(#FFFFFF,0.5);
+}
+
+// padding entre les icones et le texte
+.fa-utensils, .fa-hands-helping{
+    padding-right: 1rem;
+}
+
+//partie css de loading spinner
+
+.container__loader{
+    width: 100%;
+    height: 100%;
+    margin:auto;
+    position: absolute;
+    top:0; left:0; right: 0; bottom: 0;
+    animation:container-loading 2s 1;
+  }
+  
+.lds-ellipsis {
+    display: inline-block;
+    width: 250px;
+    height: 50px;
+    animation:loader 1s 1 forwards;
+}
+  
+.lds-ellipsis div {
+    position: absolute;
+    top: 33px;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background: #FFFFFF;
+    animation-timing-function: cubic-bezier(0, 1, 1, 0);
+    margin-left: 42%;
+    margin-top: 35%;
+}
+  
+.lds-ellipsis div:nth-child(1) {
+    left: 8px;
+    animation: lds-ellipsis1 0.6s infinite;
+    
+}
+  
+.lds-ellipsis div:nth-child(2) {
+    left: 8px;
+    animation: lds-ellipsis2 0.6s infinite;
+   
+}
+  
+.lds-ellipsis div:nth-child(3) {
+    left: 32px;
+    animation: lds-ellipsis2 0.6s infinite;
+    
+}
+  
+.lds-ellipsis div:nth-child(4) {
+    left: 56px;
+    animation: lds-ellipsis3 0.6s infinite;   
+}
+
+@keyframes lds-ellipsis1 {
+    0% {
+      transform: scale(0);
+      background: #9356DC; 
+    }
+    100% {
+      transform: scale(1);
+      background: #FF79DA;
+    }
+}
+  
+@keyframes lds-ellipsis3 {
+    0% {
+      transform: scale(1);
+      background: #FF79DA;
+    }
+    100% {
+      transform: scale(0);
+      background: #9356DC;
+    }
+}
+
+@keyframes lds-ellipsis2 {
+    0% {
+      transform: translate(0, 0);
+      background: #9356DC;
+    }
+    100% {
+      transform: translate(24px, 0);
+      background: #FF79DA;
+    }
+}
+  
+@keyframes container-loading {
+    0% {
+      opacity:1;
+      background: #FFFFFF;
+      z-index: 999;
+    }
+    
+    95%{
+      opacity:0.8;
+    }  
+    100% {
+      opacity: 0;
+      z-index: 1;
+    }
+}
+  
+@keyframes loader{
+    0%{
+    opacity: 1;
+    }
+    95%{
+      opacity: 0.8;
+    }  
+    100% {
+      opacity: 0;
+    }
+}
+
+//page des restaurants header
+
+.fa-arrow-left{
+    font-size: 1.5rem;
+    color:rgba(#000000,0.5);
+    text-shadow: 1px 1px 1px $color-font-map;
+    position: relative;
+    bottom : 3rem;
+    padding-left: 1.5rem;
+}
+
+//page restaurant photo du resto
+
+.photoresto__img{
+    height: 23rem;
+    width: 100%;
+    object-fit: cover;
+    margin-top: -1.2rem;
+}
+
+//bloc avec les menus
+
+.menuresto{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    border:1px solid $fond-gris;
+    border-radius: 30px 30px 0px 0px;
+    background-color:$fond-gris;
+    position:relative;
+    margin-top: -1.5rem;
+    padding-bottom: 5rem;
+}
+
+//identification du restaurant
+
+.menuresto__titre{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 5rem;
+}
+
+h5{
+    padding-left: 1.5rem;
+    font-family: 'shrikhandregular',Arial, Verdana, sans-serif;
+    font-size: 1.5rem;  
+}
+
+.btn-coeur{
+    margin-top: 2rem;
+    margin-right: 1.5rem;
+}
+
+//animation du bouton j'aime en forme de coeur
+
+.menuresto__coeurvide{
+    color:rgba(#000000,0.8);
+    padding-top:4rem;
+    font-size: 1.5rem; 
+}
+
+.menuresto__coeurplein{
+    padding-top: 4rem;
+    font-size: 1.5rem;
+    opacity: 0;
+}
+
+.menuresto__coeurplein:hover{
+    cursor: pointer;
+    animation-duration: $coeur-duration;
+    animation-delay: $coeur-delay;
+    animation-name: coeur;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    
+}
+
+//entrée plats desserts
+
+.menuresto__plat{
+    text-transform: uppercase;
+    line-height: 3.5rem;
+    font-size: 1.5rem;
+    color:rgba(#000000,0.4);
+    border-bottom:4px solid $color-vert;
+    width: 4rem;
+    margin-left: 1.5rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.menuresto__btn{
+display: block;
+margin-left: 1.5rem;
+margin-right: 1.5rem;
+margin-top: 1.2rem;
+width: 100%;
+height: 4.7rem;
+border:1px solid #FFFFFF;
+background-color: #FFFFFF;
+box-shadow: 2px 2px 12px rgba(black, 0.2);
+border-radius: 15px;
+cursor: pointer;
+
+  &:hover +.menuresto__coche{
+    animation-name: anim-coche;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+
+    &>.circle{
+      transform: rotate(0deg);
+    }
+    
+  }
+  
+  &:hover >.plat__texte >.prix{
+    animation-name: anim-prix;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+  }
+
+  &:hover >.plat__texte >.plat__complements{
+    width: 15rem;
+    height: 1.5rem;
+    overflow:hidden;
+    white-space:nowrap;
+    overflow-wrap:break-word;
+    text-overflow: ellipsis;
+    //word-wrap:break-word;
+    //word-break: break-all;
+    word-break: break-word;
+    hyphens: auto;       
+  } 
+}
+
+.plat__titre{
+    font-size: 1.3rem;
+    font-weight: bold;
+    padding-left: 0.5rem;
+    padding-top: 0.8rem;
+}
+
+.plat__texte{
+  display: flex;
+  justify-content:space-between;
+}
+
+.plat__complements{
+  padding-left: 0.5rem;
+  padding-top: 0.3rem;
+}
+
+.prix{
+    font-weight: bold;
+    padding-right: 1.5rem;
+    padding-top: 0.3rem;  
+}
+
+.bouton__commander a {
+    @include bouton ;
+}
+
+.bouton__commander a:hover {
+      @include btn-hover
+}
+
+.bouton__commander{
+    align-self: center;
+    margin-top: 3rem;   
+}
+
+//animation des menus apparition progressive
+
+@keyframes menuresto-anim{
+  0%{
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  
+  100%{
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@mixin btnresto-anim{
+  animation-name: menuresto-anim;
+  animation-duration: 2s;
+  transition-timing-function: ease-in-out;
+}
+
+.menuresto__container:nth-child(1){
+  @include btnresto-anim;
+}
+
+.menuresto__container:nth-child(2){
+  @include btnresto-anim;
+ animation-delay: 300ms;
+}
+
+.menuresto__container:nth-child(3){
+  @include btnresto-anim;
+  animation-delay: 600ms;
+}
+
+.menuresto__container:nth-child(4){
+  @include btnresto-anim;
+  animation-delay: 900ms;
+}
+
+//animation bouton menu avec coche qui apparait
+
+.menuresto__coche{
+  width: 5rem;
+  height: 4.7rem;
+  margin-top: 1.2rem;
+  margin-right: 1.5rem;
+  background-color:$color-vert;
+  border-radius: 0px 15px 15px 0px;
+  position: absolute;
+  z-index: 1;
+  opacity: 0;  
+}
+
+.menuresto__container{
+  display: flex;
+  position: relative;
+  justify-content: flex-end;
+}
+
+@keyframes anim-coche{
+0%{
+  opacity:1;
+  transform: translateX(2rem);
+  }
+100%{
+  transform: translateX(0);
+  opacity: 1;
+  }
+}
+
+.circle{
+  color:#FFFFFF;
+  font-size: 2rem;
+  position: relative;
+  top:1.4rem;
+  left: 1.5rem;
+  transform: rotate(-360deg);
+  transition: transform 500ms ease-in-out;
+  transform-origin:1.5rem center;
+}
+
+@keyframes anim-prix{
+  0%{
+    transform:translateX(0);
+  }
+
+  100%{
+    transform:translateX(-4.5rem);
+  }
+}
+
+
+
+
