@@ -519,8 +519,18 @@ h5 {
   animation-fill-mode: forwards;
 }
 .menuresto__btn:hover > .plat__texte > .plat__complements {
-  width: 15rem;
+  width: 10rem;
   height: 1.5rem;
+  overflow: hidden;
+  white-space: nowrap;
+  overflow-wrap: break-word;
+  text-overflow: ellipsis;
+  word-break: break-word;
+  hyphens: auto;
+}
+.menuresto__btn:hover > .plat__titre {
+  width: 20rem;
+  height: 2.2rem;
   overflow: hidden;
   white-space: nowrap;
   overflow-wrap: break-word;
@@ -660,7 +670,7 @@ h5 {
     transform: translateX(0);
   }
   100% {
-    transform: translateX(-4.5rem);
+    transform: translateX(-4rem);
   }
 }
 
