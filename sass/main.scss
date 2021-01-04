@@ -37,31 +37,6 @@ $background-btn:linear-gradient($color-secondaire,$color-primaire);
     font-style: normal;
 }
 
-// screen mobile
-$mobile: 599px;
- 
-// screen smalltablette
-$smalltablette: 768px;
- 
-// screen tablette
-$tablette: 992px;
- 
-// screen ordi
-$desktop: 1200px;
-
-@mixin mobile-only {
-    @media (max-width: #{$mobile}) {
-        @content;
-    }
- }
-
-// .selecteur {
-    //padding: 0 15px;
-// pour utiliser la mixin ds le selecteur
-    //@include mobile-only {
-        //padding: 0 20px;
-    //}
-
 @mixin bouton{
     display:block;
     height: 4.5rem;
@@ -86,9 +61,11 @@ $desktop: 1200px;
     box-shadow: 2px 2px 12px rgba(black, 0.2);
     border-radius:20px;
     padding-top:1.8rem;
-    text-align:center;
+    //text-align:center;
     margin-left: 1rem;
     margin-top: 1.5rem;
+    position: relative;
+    z-index: 5;
 }
 
 @mixin btn-hover{
@@ -199,11 +176,21 @@ margin-bottom: 5rem;
 .fonctionnement__bouton{
     @include fonctionnement__btn ;
     background-color: $fond-gris;
-}
 
-.fonctionnement__bouton2{
-    @include fonctionnement__btn ;
+  &:hover{
+    cursor: pointer;
     background-color: $fond-btn2;
+    box-shadow: 3px 3px 16px rgba(black, 0.3);
+    &>.fa-mobile-alt{
+      color:$color-primaire;
+    }
+    &>.fa-list-ul{
+      color:$color-primaire;
+    }
+    &>.fa-store{
+      color:$color-primaire;
+    }
+  }
 }
 
 .texte-btn{
@@ -212,18 +199,21 @@ margin-bottom: 5rem;
     text-shadow: 1px 1px 2px $color-font-map;
     font-weight: bold;
     color:$color-font-map;
+    
+    @media (max-width: 599px) {
+      margin-left: 1rem;
+      width: 9rem;
+      overflow-wrap: break-word;
+      position:relative;
+      bottom: 0.5rem;
+      
+    }
 }
 
-.fa-mobile-alt, .fa-list-ul{
+.fa-mobile-alt, .fa-list-ul, .fa-store{
     margin-left: 1.5rem;
     font-size: 2rem;
     color:rgba(#000000,0.4);
-}
-
-.fa-store{
-    margin-left: 1.5rem;
-    font-size: 2rem;
-    color:$color-primaire;
 }
 
 .num-btn{
@@ -233,6 +223,7 @@ margin-bottom: 5rem;
     width: 30px;
     height: 30px;
     color:$btn-font;
+    text-align: center;
     position: relative;
     margin-left: -1rem;
     padding-top: 0.3rem;
@@ -467,7 +458,7 @@ h4{
     0% {
       opacity:1;
       background: #FFFFFF;
-      z-index: 999;
+      z-index: 10;
     }
     
     95%{
@@ -615,7 +606,7 @@ cursor: pointer;
   }
 
   &:hover >.plat__texte >.plat__complements{
-    width: 15rem;
+    width: 10rem;
     height: 1.5rem;
     overflow:hidden;
     white-space:nowrap;
@@ -625,7 +616,25 @@ cursor: pointer;
     //word-break: break-all;
     word-break: break-word;
     hyphens: auto;       
-  } 
+  }
+
+  &:hover >.plat__titre{
+    width: 20rem;
+    height: 2.2rem;
+    overflow:hidden;
+    white-space:nowrap;
+    overflow-wrap:break-word;
+    text-overflow: ellipsis;
+    word-break: break-word;
+    hyphens: auto;
+    @media (max-width: 599px) {
+      width: 12rem;
+    }      
+  }
+  @media (max-width: 599px) {
+    height:5.7rem;
+  }
+
 }
 
 .plat__titre{
@@ -713,8 +722,10 @@ cursor: pointer;
   background-color:$color-vert;
   border-radius: 0px 15px 15px 0px;
   position: absolute;
-  z-index: 1;
-  opacity: 0;  
+  opacity: 0;
+  @media (max-width: 599px) {
+    height:5.7rem;
+  } 
 }
 
 .menuresto__container{
@@ -726,7 +737,7 @@ cursor: pointer;
 @keyframes anim-coche{
 0%{
   opacity:1;
-  transform: translateX(2rem);
+  transform: translateX(3rem);
   }
 100%{
   transform: translateX(0);
@@ -743,6 +754,9 @@ cursor: pointer;
   transform: rotate(-360deg);
   transition: transform 500ms ease-in-out;
   transform-origin:1.5rem center;
+  @media (max-width: 599px) {
+    top:1.7rem;
+  }
 }
 
 @keyframes anim-prix{
@@ -751,7 +765,7 @@ cursor: pointer;
   }
 
   100%{
-    transform:translateX(-4.5rem);
+    transform:translateX(-4rem);
   }
 }
 

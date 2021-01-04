@@ -125,23 +125,25 @@ html, body {
   box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2);
   border-radius: 20px;
   padding-top: 1.8rem;
-  text-align: center;
   margin-left: 1rem;
   margin-top: 1.5rem;
+  position: relative;
+  z-index: 5;
   background-color: #f6f6f6;
 }
-
-.fonctionnement__bouton2 {
-  display: flex;
-  height: 5.5rem;
-  width: auto;
-  box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2);
-  border-radius: 20px;
-  padding-top: 1.8rem;
-  text-align: center;
-  margin-left: 1rem;
-  margin-top: 1.5rem;
+.fonctionnement__bouton:hover {
+  cursor: pointer;
   background-color: #f5edff;
+  box-shadow: 3px 3px 16px rgba(0, 0, 0, 0.3);
+}
+.fonctionnement__bouton:hover > .fa-mobile-alt {
+  color: #9356DC;
+}
+.fonctionnement__bouton:hover > .fa-list-ul {
+  color: #9356DC;
+}
+.fonctionnement__bouton:hover > .fa-store {
+  color: #9356DC;
 }
 
 .texte-btn {
@@ -151,17 +153,20 @@ html, body {
   font-weight: bold;
   color: rgba(0, 0, 0, 0.6);
 }
+@media (max-width: 599px) {
+  .texte-btn {
+    margin-left: 1rem;
+    width: 9rem;
+    overflow-wrap: break-word;
+    position: relative;
+    bottom: 0.5rem;
+  }
+}
 
-.fa-mobile-alt, .fa-list-ul {
+.fa-mobile-alt, .fa-list-ul, .fa-store {
   margin-left: 1.5rem;
   font-size: 2rem;
   color: rgba(0, 0, 0, 0.4);
-}
-
-.fa-store {
-  margin-left: 1.5rem;
-  font-size: 2rem;
-  color: #9356DC;
 }
 
 .num-btn {
@@ -171,6 +176,7 @@ html, body {
   width: 30px;
   height: 30px;
   color: rgba(255, 255, 255, 0.8);
+  text-align: center;
   position: relative;
   margin-left: -1rem;
   padding-top: 0.3rem;
@@ -391,7 +397,7 @@ h4 {
   0% {
     opacity: 1;
     background: #FFFFFF;
-    z-index: 999;
+    z-index: 10;
   }
   95% {
     opacity: 0.8;
@@ -538,6 +544,16 @@ h5 {
   word-break: break-word;
   hyphens: auto;
 }
+@media (max-width: 599px) {
+  .menuresto__btn:hover > .plat__titre {
+    width: 12rem;
+  }
+}
+@media (max-width: 599px) {
+  .menuresto__btn {
+    height: 5.7rem;
+  }
+}
 
 .plat__titre {
   font-size: 1.3rem;
@@ -634,8 +650,12 @@ h5 {
   background-color: #99e2d0;
   border-radius: 0px 15px 15px 0px;
   position: absolute;
-  z-index: 1;
   opacity: 0;
+}
+@media (max-width: 599px) {
+  .menuresto__coche {
+    height: 5.7rem;
+  }
 }
 
 .menuresto__container {
@@ -647,7 +667,7 @@ h5 {
 @keyframes anim-coche {
   0% {
     opacity: 1;
-    transform: translateX(2rem);
+    transform: translateX(3rem);
   }
   100% {
     transform: translateX(0);
@@ -663,6 +683,11 @@ h5 {
   transform: rotate(-360deg);
   transition: transform 500ms ease-in-out;
   transform-origin: 1.5rem center;
+}
+@media (max-width: 599px) {
+  .circle {
+    top: 1.7rem;
+  }
 }
 
 @keyframes anim-prix {
